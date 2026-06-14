@@ -1,0 +1,72 @@
+<Window x:Class="OrderManagement.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrderManagement.Desktop"
+        xmlns:vm="clr-namespace:OrderManagement.Desktop.ViewModels"
+        mc:Ignorable="d"
+        Title="Order Management (Desktop)" Height="560" Width="900">
+
+    <!-- BAD: the view model is created here and its constructor does blocking I/O. -->
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Login row. BAD: PasswordBox is avoided; password is a plain TextBox. -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+            <TextBlock Text="Email:" VerticalAlignment="Center" />
+            <TextBox Width="180" Margin="6,0" Text="{Binding Email}" />
+            <TextBlock Text="Password:" VerticalAlignment="Center" />
+            <TextBox Width="120" Margin="6,0" Text="{Binding Password}" />
+            <Button Content="Login" Width="80" Command="{Binding LoginCommand}" />
+        </StackPanel>
+
+        <!-- Toolbar -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
+            <Button Content="Refresh Orders" Width="110" Command="{Binding LoadOrdersCommand}" />
+            <TextBlock Text="New status:" VerticalAlignment="Center" Margin="12,0,4,0" />
+            <TextBox Width="120" Text="{Binding NewStatus}" />
+            <Button Content="Update Status" Width="110" Margin="6,0" Command="{Binding UpdateStatusCommand}" />
+            <Button Content="Load Revenue Report" Width="150" Margin="6,0" Command="{Binding LoadRevenueReportCommand}" />
+            <!-- BAD: this button is wired to a code-behind event handler. -->
+            <Button Content="Export CSV" Width="90" Click="ExportButton_Click" />
+        </StackPanel>
+
+        <!-- Orders grid -->
+        <DataGrid Grid.Row="2"
+                  ItemsSource="{Binding Orders}"
+                  SelectedItem="{Binding SelectedOrder}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" />
+                <DataGridTextColumn Header="Customer" Binding="{Binding CustomerName}" Width="160" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="120" />
+                <DataGridTextColumn Header="Items" Binding="{Binding ItemCount}" Width="60" />
+                <DataGridTextColumn Header="Total" Binding="{Binding Total}" Width="100" />
+                <DataGridTextColumn Header="Created" Binding="{Binding CreatedAt}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Revenue report dump -->
+        <TextBox Grid.Row="3" Height="90" Margin="0,8,0,0"
+                 IsReadOnly="True" TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Auto"
+                 Text="{Binding RevenueReport}" />
+
+        <!-- Status bar -->
+        <TextBlock Grid.Row="4" Margin="0,6,0,0" Foreground="DarkSlateGray"
+                   Text="{Binding StatusMessage}" />
+    </Grid>
+</Window>

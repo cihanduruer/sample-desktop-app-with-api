@@ -1,0 +1,30 @@
+# ---- .NET ----
+bin/
+obj/
+*.user
+*.suo
+.vs/
+artifacts/
+
+# ---- Python ----
+.venv/
+__pycache__/
+*.pyc
+src/api/orders.db
+
+# ---- Node / React ----
+node_modules/
+src/web/OrderManagement.Web/ClientApp/node_modules/
+src/web/OrderManagement.Web/ClientApp/dist/
+src/web/OrderManagement.Web/wwwroot/assets/
+src/web/OrderManagement.Web/wwwroot/index.html
+
+# ---- Diagnostics / traces ----
+*.nettrace
+*.speedscope.json
+trace.*
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*.log
