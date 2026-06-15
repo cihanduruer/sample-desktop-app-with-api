@@ -1,0 +1,23 @@
+# Runs the two containerizable tiers of the demo together.
+# The WPF desktop app is a Windows GUI and is NOT containerized here
+# (see docs/modernization/08-docker-containerization.md for the rationale).
+#
+#   docker compose up --build
+#   Web UI + BFF : http://localhost:5080
+#   Python API   : http://localhost:5001
+services:
+  api:
+    build: ./src/api
+    ports:
+      - "5001:5001"
+
+  web:
+    build: ./src/web/OrderManagement.Web
+    ports:
+      - "5080:5080"
+    environment:
+      # The BFF reads PythonApi:BaseUrl from configuration; in compose the API is
+      # reachable by its service name.
+      - PythonApi__BaseUrl=http://api:5001
+    depends_on:
+      - api
