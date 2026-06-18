@@ -1,3 +1,8 @@
+:root {
+  --abb-red: #ff000f;
+  --abb-red-dark: #cc0009;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -10,4 +15,19 @@ td,
 th {
   border: 1px solid #ccc;
   padding: 4px 8px;
+}
+th {
+  background: var(--abb-red);
+  color: #fff;
+}
+button {
+  background: var(--abb-red);
+  color: #fff;
+  border: none;
+  padding: 4px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+button:hover {
+  background: var(--abb-red-dark);
 }
