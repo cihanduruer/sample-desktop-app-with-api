@@ -1,108 +1,133 @@
-"""
-Database bootstrap + seed for the Order Management API.
+"""Database access: per-request connections, schema, and seed data.
 
-NOTE (for the modernization workshop):
-This module is intentionally written with bad practices. It is a teaching artifact.
-Problems planted here on purpose:
-  * Passwords are stored in PLAINTEXT.
-  * The schema has no foreign keys / constraints / indexes.
-  * Seed runs every process start and silently ignores errors.
-  * A single global connection is shared across threads (not thread-safe).
-Do not copy this into a real system.
+Design notes (clean replacements for the original teaching artifact):
+  * A connection is opened per request and stored on Flask's ``g``, then closed on
+    teardown — no shared global connection across threads.
+  * Foreign keys are enabled on every connection.
+  * The schema declares NOT NULL/UNIQUE/CHECK constraints, foreign keys and indexes.
+  * Passwords are stored hashed (never in plaintext).
 """
-
-import os
 import sqlite3
 
-# BAD: database file path is hard-coded relative to the current working directory.
-DB_PATH = os.path.join(os.path.dirname(__file__), "orders.db")
+from flask import Flask, current_app, g
 
-# BAD: one global connection, reused everywhere, check_same_thread disabled so Flask
-# can use it from multiple threads. This is a classic source of corruption / locking bugs.
-_conn = sqlite3.connect(DB_PATH, check_same_thread=False)
-_conn.row_factory = sqlite3.Row
+from security import hash_password
+from validation import VALID_ORDER_STATUSES
 
 
-def get_connection():
-    # BAD: returns the shared global connection instead of a per-request connection.
-    return _conn
+def get_db() -> sqlite3.Connection:
+    """Return the request-scoped connection, opening one on first use."""
+    if "db" not in g:
+        connection = sqlite3.connect(current_app.config["DATABASE_PATH"])
+        connection.row_factory = sqlite3.Row
+        connection.execute("PRAGMA foreign_keys = ON")
+        g.db = connection
+    return g.db
 
 
-def init_db():
-    cur = _conn.cursor()
+def close_db(_exception: BaseException | None = None) -> None:
+    """Close the request-scoped connection if it was opened."""
+    connection = g.pop("db", None)
+    if connection is not None:
+        connection.close()
 
-    # BAD: no constraints, no foreign keys, prices stored as REAL (floating point money).
-    cur.executescript(
-        """
-        CREATE TABLE IF NOT EXISTS customers (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            email TEXT,
-            password TEXT,
-            created_at TEXT
-        );
 
-        CREATE TABLE IF NOT EXISTS products (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            price REAL,
-            stock INTEGER
-        );
+def init_app(app: Flask) -> None:
+    """Register the teardown that closes the connection after each request."""
+    app.teardown_appcontext(close_db)
 
-        CREATE TABLE IF NOT EXISTS orders (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            customer_id INTEGER,
-            status TEXT,
-            created_at TEXT
-        );
 
-        CREATE TABLE IF NOT EXISTS order_items (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            order_id INTEGER,
-            product_id INTEGER,
-            quantity INTEGER,
-            unit_price REAL
-        );
-        """
+_STATUS_ALLOW_LIST = ", ".join(f"'{status}'" for status in VALID_ORDER_STATUSES)
+
+_SCHEMA_STATEMENTS: tuple[str, ...] = (
+    """
+    CREATE TABLE IF NOT EXISTS customers (
+        id            INTEGER PRIMARY KEY AUTOINCREMENT,
+        name          TEXT NOT NULL,
+        email         TEXT NOT NULL UNIQUE,
+        password_hash TEXT NOT NULL,
+        created_at    TEXT NOT NULL DEFAULT (datetime('now'))
     )
-    _conn.commit()
-    _seed()
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS products (
+        id    INTEGER PRIMARY KEY AUTOINCREMENT,
+        name  TEXT NOT NULL,
+        price REAL NOT NULL CHECK (price >= 0),
+        stock INTEGER NOT NULL CHECK (stock >= 0)
+    )
+    """,
+    f"""
+    CREATE TABLE IF NOT EXISTS orders (
+        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+        customer_id INTEGER NOT NULL REFERENCES customers(id),
+        status      TEXT NOT NULL CHECK (status IN ({_STATUS_ALLOW_LIST})),
+        created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+    )
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS order_items (
+        id         INTEGER PRIMARY KEY AUTOINCREMENT,
+        order_id   INTEGER NOT NULL REFERENCES orders(id),
+        product_id INTEGER NOT NULL REFERENCES products(id),
+        quantity   INTEGER NOT NULL CHECK (quantity > 0),
+        unit_price REAL NOT NULL CHECK (unit_price >= 0)
+    )
+    """,
+    "CREATE INDEX IF NOT EXISTS idx_orders_customer_id ON orders(customer_id)",
+    "CREATE INDEX IF NOT EXISTS idx_order_items_order_id ON order_items(order_id)",
+    "CREATE INDEX IF NOT EXISTS idx_order_items_product_id ON order_items(product_id)",
+)
 
 
-def _seed():
-    cur = _conn.cursor()
-    cur.execute("SELECT COUNT(*) AS c FROM customers")
-    if cur.fetchone()["c"] > 0:
+def init_schema() -> None:
+    """Create tables, constraints and indexes if they do not yet exist."""
+    connection = get_db()
+    with connection:
+        for statement in _SCHEMA_STATEMENTS:
+            connection.execute(statement)
+
+
+def seed_if_empty() -> None:
+    """Insert demo data on a fresh database only."""
+    connection = get_db()
+    already_seeded = connection.execute(
+        "SELECT COUNT(*) AS count FROM customers"
+    ).fetchone()["count"]
+    if already_seeded:
         return
 
-    # BAD: plaintext passwords, and the "admin" password is trivially guessable.
+    with connection:
+        _seed(connection)
+
+
+def _seed(connection: sqlite3.Connection) -> None:
     customers = [
         ("Alice Johnson", "alice@example.com", "password123"),
         ("Bob Smith", "bob@example.com", "qwerty"),
         ("Carol Diaz", "carol@example.com", "letmein"),
         ("Admin", "admin@example.com", "admin"),
     ]
-    for name, email, pwd in customers:
-        cur.execute(
-            "INSERT INTO customers (name, email, password, created_at) VALUES (?, ?, ?, datetime('now'))",
-            (name, email, pwd),
+    for name, email, plaintext_password in customers:
+        connection.execute(
+            "INSERT INTO customers (name, email, password_hash) VALUES (?, ?, ?)",
+            (name, email, hash_password(plaintext_password)),
         )
 
     products = [
         ("Mechanical Keyboard", 79.99, 50),
         ("Wireless Mouse", 29.50, 120),
-        ("27\" Monitor", 219.00, 30),
+        ('27" Monitor', 219.00, 30),
         ("USB-C Hub", 39.95, 75),
-        ("Laptop Stand", 24.25, 0),  # out of stock on purpose
+        ("Laptop Stand", 24.25, 0),
         ("Noise Cancelling Headphones", 149.99, 18),
     ]
     for name, price, stock in products:
-        cur.execute(
+        connection.execute(
             "INSERT INTO products (name, price, stock) VALUES (?, ?, ?)",
             (name, price, stock),
         )
 
-    # A few orders so reports have something to chew on.
     orders = [
         (1, "NEW"),
         (1, "SHIPPED"),
@@ -111,12 +136,12 @@ def _seed():
         (2, "CANCELLED"),
     ]
     for customer_id, status in orders:
-        cur.execute(
-            "INSERT INTO orders (customer_id, status, created_at) VALUES (?, ?, datetime('now'))",
+        connection.execute(
+            "INSERT INTO orders (customer_id, status) VALUES (?, ?)",
             (customer_id, status),
         )
 
-    items = [
+    order_items = [
         (1, 1, 1, 79.99),
         (1, 2, 2, 29.50),
         (2, 3, 1, 219.00),
@@ -125,10 +150,9 @@ def _seed():
         (4, 2, 1, 29.50),
         (5, 1, 5, 79.99),
     ]
-    for order_id, product_id, qty, unit_price in items:
-        cur.execute(
-            "INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES (?, ?, ?, ?)",
-            (order_id, product_id, qty, unit_price),
+    for order_id, product_id, quantity, unit_price in order_items:
+        connection.execute(
+            "INSERT INTO order_items (order_id, product_id, quantity, unit_price) "
+            "VALUES (?, ?, ?, ?)",
+            (order_id, product_id, quantity, unit_price),
         )
-
-    _conn.commit()

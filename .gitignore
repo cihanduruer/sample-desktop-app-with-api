@@ -12,6 +12,12 @@ __pycache__/
 *.pyc
 src/api/orders.db
 
+# ---- Performance tests (Locust artifacts) ----
+src/api/perf/results*.csv
+src/api/perf/report.html
+src/api/perf/step_results*.csv
+src/api/perf/step_report.html
+
 # ---- Node / React ----
 node_modules/
 src/web/OrderManagement.Web/ClientApp/node_modules/

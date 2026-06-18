@@ -1,0 +1,919 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-06-18T09:07:50.1905851Z",
+  "analysisEndTime": "2026-06-18T09:07:50.7415716Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 2,
+      "issues": 5,
+      "incidents": 34,
+      "effort": 34
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 25,
+        "Optional": 0,
+        "Potential": 9,
+        "Information": 0
+      },
+      "category": {
+        "Project": 2,
+        "Api": 31,
+        "NuGet": 1
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+      "startingProject": true,
+      "issues": 3,
+      "storyPoints": 30,
+      "properties": {
+        "appName": "OrderManagement.Desktop",
+        "projectKind": "Wpf",
+        "frameworks": [
+          "net8.0-windows"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 6,
+        "numberOfCodeFiles": 6,
+        "linesTotal": 312,
+        "linesOfCode": 312,
+        "totalApiScanned": 608,
+        "minLinesOfCodeToChange": 29,
+        "maxLinesOfCodeToChange": 29
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "a0ff97d9-e7c8-4a5d-ad50-f1ef2e720031",
+          "ruleId": "Project.0002",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0-windows\nRecommended target framework: net10.0-windows",
+              "protected": "Current target framework: net8.0-windows\nRecommended target framework: net10.0-windows"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+            "snippet": "Current target framework: net8.0-windows\nRecommended target framework: net10.0-windows",
+            "protectedSnippet": "Current target framework: net8.0-windows\nRecommended target framework: net10.0-windows",
+            "properties": {
+              "CurrentTargetFramework": "net8.0-windows",
+              "RecommendedTargetFramework": "net10.0-windows"
+            }
+          }
+        },
+        {
+          "incidentId": "18a3dede-c4dd-4ef5-9799-bd9f1d1e3f0b",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "InternalTypeHelper",
+              "protected": "M:System.Windows.Markup.InternalTypeHelper.#ctor"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\GeneratedInternalTypeHelper.g.i.cs",
+            "snippet": "InternalTypeHelper",
+            "protectedSnippet": "M:System.Windows.Markup.InternalTypeHelper.#ctor",
+            "label": "M:System.Windows.Markup.InternalTypeHelper.#ctor",
+            "line": 19,
+            "column": 76
+          }
+        },
+        {
+          "incidentId": "73c770f9-7e96-43d0-9a16-8b08bc228a04",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "InternalTypeHelper",
+              "protected": "T:System.Windows.Markup.InternalTypeHelper"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\GeneratedInternalTypeHelper.g.i.cs",
+            "snippet": "InternalTypeHelper",
+            "protectedSnippet": "T:System.Windows.Markup.InternalTypeHelper",
+            "label": "T:System.Windows.Markup.InternalTypeHelper",
+            "line": 19,
+            "column": 76
+          }
+        },
+        {
+          "incidentId": "bf89eec4-b64d-44e3-b71f-a4e454927e48",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MessageBox.Show(\u0022Pick an order first\u0022);",
+              "protected": "T:System.Windows.MessageBox"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\ViewModels\\MainViewModel.cs",
+            "snippet": "MessageBox.Show(\u0022Pick an order first\u0022);",
+            "protectedSnippet": "T:System.Windows.MessageBox",
+            "label": "T:System.Windows.MessageBox",
+            "line": 96,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a7026e25-5283-4c9a-8ee2-f1e555020311",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MessageBox.Show(\u0022Pick an order first\u0022);",
+              "protected": "T:System.Windows.MessageBoxResult"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\ViewModels\\MainViewModel.cs",
+            "snippet": "MessageBox.Show(\u0022Pick an order first\u0022);",
+            "protectedSnippet": "T:System.Windows.MessageBoxResult",
+            "label": "T:System.Windows.MessageBoxResult",
+            "line": 96,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "0e81d378-fca1-4925-a0fb-efd99973e313",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MessageBox.Show(\u0022Pick an order first\u0022);",
+              "protected": "M:System.Windows.MessageBox.Show(System.String)"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\ViewModels\\MainViewModel.cs",
+            "snippet": "MessageBox.Show(\u0022Pick an order first\u0022);",
+            "protectedSnippet": "M:System.Windows.MessageBox.Show(System.String)",
+            "label": "M:System.Windows.MessageBox.Show(System.String)",
+            "line": 96,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "57421fde-2979-4eca-a8ac-903e194985ea",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var text = await resp.Content.ReadAsStringAsync();",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\Services\\ApiClient.cs",
+            "snippet": "var text = await resp.Content.ReadAsStringAsync();",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 63,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "d8c0ed07-0c21-41bf-87a5-07c92f6659b1",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "app.Run();",
+              "protected": "M:System.Windows.Application.Run"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+            "snippet": "app.Run();",
+            "protectedSnippet": "M:System.Windows.Application.Run",
+            "label": "M:System.Windows.Application.Run",
+            "line": 66,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b01075c0-22c0-4236-af6f-5d65918042c6",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+            "snippet": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 51,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "beb67b26-2e95-4520-abb1-acc8cdeb9798",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+            "snippet": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 51,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "fcf48322-d223-4a87-b152-d237e4e19301",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+            "snippet": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 51,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "d2735efd-7fc4-4898-b797-d42bb589b45c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "P:System.Windows.Application.StartupUri"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\App.g.i.cs",
+            "snippet": "this.StartupUri = new System.Uri(\u0022MainWindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "P:System.Windows.Application.StartupUri",
+            "label": "P:System.Windows.Application.StartupUri",
+            "line": 51,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ff9a4e5f-f995-4b4e-9662-37136e8c7175",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application",
+              "protected": "M:System.Windows.Application.#ctor"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\App.xaml.cs",
+            "snippet": "Application",
+            "protectedSnippet": "M:System.Windows.Application.#ctor",
+            "label": "M:System.Windows.Application.#ctor",
+            "line": 9,
+            "column": 27
+          }
+        },
+        {
+          "incidentId": "b0be3db8-c532-4824-b43a-292e1c09c821",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Application",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\App.xaml.cs",
+            "snippet": "Application",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 9,
+            "column": 27
+          }
+        },
+        {
+          "incidentId": "a059330d-7c47-47a8-ae00-4b77a42d0a0c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "((System.Windows.Controls.Button)(target)).Click \u002B= new System.Windows.RoutedEventHandler(this.ExportButton_Click);",
+              "protected": "T:System.Windows.RoutedEventHandler"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+            "snippet": "((System.Windows.Controls.Button)(target)).Click \u002B= new System.Windows.RoutedEventHandler(this.ExportButton_Click);",
+            "protectedSnippet": "T:System.Windows.RoutedEventHandler",
+            "label": "T:System.Windows.RoutedEventHandler",
+            "line": 77,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "f026184d-4d65-49fb-bda6-27f4fc9f387b",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "((System.Windows.Controls.Button)(target)).Click \u002B= new System.Windows.RoutedEventHandler(this.ExportButton_Click);",
+              "protected": "T:System.Windows.RoutedEventHandler"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+            "snippet": "((System.Windows.Controls.Button)(target)).Click \u002B= new System.Windows.RoutedEventHandler(this.ExportButton_Click);",
+            "protectedSnippet": "T:System.Windows.RoutedEventHandler",
+            "label": "T:System.Windows.RoutedEventHandler",
+            "line": 77,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "d3a4c079-7036-434c-b09e-6d893e3ec31e",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "((System.Windows.Controls.Button)(target)).Click \u002B= new System.Windows.RoutedEventHandler(this.ExportButton_Click);",
+              "protected": "E:System.Windows.Controls.Primitives.ButtonBase.Click"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+            "snippet": "((System.Windows.Controls.Button)(target)).Click \u002B= new System.Windows.RoutedEventHandler(this.ExportButton_Click);",
+            "protectedSnippet": "E:System.Windows.Controls.Primitives.ButtonBase.Click",
+            "label": "E:System.Windows.Controls.Primitives.ButtonBase.Click",
+            "line": 77,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "8d85d5ab-51d7-4bdf-9181-096f215f276c",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "T:System.Windows.Application"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "T:System.Windows.Application",
+            "label": "T:System.Windows.Application",
+            "line": 59,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "50ffb00b-4f3c-49d9-9add-90f35a82c0e7",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+              "protected": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+            "snippet": "System.Windows.Application.LoadComponent(this, resourceLocater);",
+            "protectedSnippet": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "label": "M:System.Windows.Application.LoadComponent(System.Object,System.Uri)",
+            "line": 59,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "32dea4f0-11aa-41f3-a2c7-7ef18b94dc78",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/OrderManagement.Desktop;V1.0.0.0;component/mainwindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/OrderManagement.Desktop;V1.0.0.0;component/mainwindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 56,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a46e8da3-7500-41f6-9b45-3ee8b7279eec",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Uri resourceLocater = new System.Uri(\u0022/OrderManagement.Desktop;V1.0.0.0;component/mainwindow.xaml\u0022, System.UriKind.Relative);",
+              "protected": "M:System.Uri.#ctor(System.String,System.UriKind)"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+            "snippet": "System.Uri resourceLocater = new System.Uri(\u0022/OrderManagement.Desktop;V1.0.0.0;component/mainwindow.xaml\u0022, System.UriKind.Relative);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "label": "M:System.Uri.#ctor(System.String,System.UriKind)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 56,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "dd087278-a129-446f-9f0d-ec56b4512bee",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "private void ExportButton_Click(object sender, RoutedEventArgs e)",
+              "protected": "T:System.Windows.RoutedEventArgs"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\MainWindow.xaml.cs",
+            "snippet": "private void ExportButton_Click(object sender, RoutedEventArgs e)",
+            "protectedSnippet": "T:System.Windows.RoutedEventArgs",
+            "label": "T:System.Windows.RoutedEventArgs",
+            "line": 24,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "0a273406-52cd-40fc-8534-3b0ba1d6cbc6",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MessageBox.Show(\u0022Exported to \u0022 \u002B path);",
+              "protected": "T:System.Windows.MessageBox"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\MainWindow.xaml.cs",
+            "snippet": "MessageBox.Show(\u0022Exported to \u0022 \u002B path);",
+            "protectedSnippet": "T:System.Windows.MessageBox",
+            "label": "T:System.Windows.MessageBox",
+            "line": 43,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "5374b41e-b3c5-4362-ab60-391331f5a84d",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MessageBox.Show(\u0022Exported to \u0022 \u002B path);",
+              "protected": "T:System.Windows.MessageBoxResult"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\MainWindow.xaml.cs",
+            "snippet": "MessageBox.Show(\u0022Exported to \u0022 \u002B path);",
+            "protectedSnippet": "T:System.Windows.MessageBoxResult",
+            "label": "T:System.Windows.MessageBoxResult",
+            "line": 43,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "59d6d190-28a5-4d0b-ba52-24af50ea1da8",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "MessageBox.Show(\u0022Exported to \u0022 \u002B path);",
+              "protected": "M:System.Windows.MessageBox.Show(System.String)"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\MainWindow.xaml.cs",
+            "snippet": "MessageBox.Show(\u0022Exported to \u0022 \u002B path);",
+            "protectedSnippet": "M:System.Windows.MessageBox.Show(System.String)",
+            "label": "M:System.Windows.MessageBox.Show(System.String)",
+            "line": 43,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "eeb213d7-401d-43f3-b32d-f72547a537a9",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var vm = (MainViewModel)DataContext;",
+              "protected": "P:System.Windows.FrameworkElement.DataContext"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\MainWindow.xaml.cs",
+            "snippet": "var vm = (MainViewModel)DataContext;",
+            "protectedSnippet": "P:System.Windows.FrameworkElement.DataContext",
+            "label": "P:System.Windows.FrameworkElement.DataContext",
+            "line": 28,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "505a8063-9c6e-4415-98ea-2daa9e1b69cf",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public MainWindow()\r\n    {\r\n        InitializeComponent();\r\n    }",
+              "protected": "M:System.Windows.Window.#ctor"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\MainWindow.xaml.cs",
+            "snippet": "public MainWindow()\r\n    {\r\n        InitializeComponent();\r\n    }",
+            "protectedSnippet": "M:System.Windows.Window.#ctor",
+            "label": "M:System.Windows.Window.#ctor",
+            "line": 13,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "814430c4-186d-450d-baa4-fdc59b7d9490",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public MainWindow()\r\n    {\r\n        InitializeComponent();\r\n    }",
+              "protected": "M:System.Windows.Window.#ctor"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\MainWindow.xaml.cs",
+            "snippet": "public MainWindow()\r\n    {\r\n        InitializeComponent();\r\n    }",
+            "protectedSnippet": "M:System.Windows.Window.#ctor",
+            "label": "M:System.Windows.Window.#ctor",
+            "line": 13,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "3c49c80a-c01a-4ca7-b299-2eaed7d93492",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "IComponentConnector",
+              "protected": "T:System.Windows.Markup.IComponentConnector"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+            "snippet": "IComponentConnector",
+            "protectedSnippet": "T:System.Windows.Markup.IComponentConnector",
+            "label": "T:System.Windows.Markup.IComponentConnector",
+            "line": 42,
+            "column": 83
+          }
+        },
+        {
+          "incidentId": "6b896af8-52f8-48f4-aaef-0dd3cece2ed6",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "src\\desktop\\OrderManagement.Desktop\\OrderManagement.Desktop.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Window",
+              "protected": "T:System.Windows.Window"
+            },
+            "kind": "File",
+            "path": "src\\desktop\\OrderManagement.Desktop\\MainWindow.xaml.cs",
+            "snippet": "Window",
+            "protectedSnippet": "T:System.Windows.Window",
+            "label": "T:System.Windows.Window",
+            "line": 11,
+            "column": 34
+          }
+        }
+      ],
+      "features": [
+        {
+          "featureId": "Wpf",
+          "incidents": [
+            "3c49c80a-c01a-4ca7-b299-2eaed7d93492",
+            "d3a4c079-7036-434c-b09e-6d893e3ec31e",
+            "73c770f9-7e96-43d0-9a16-8b08bc228a04",
+            "18a3dede-c4dd-4ef5-9799-bd9f1d1e3f0b"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src\\web\\OrderManagement.Web\\OrderManagement.Web.csproj",
+      "startingProject": true,
+      "issues": 3,
+      "storyPoints": 4,
+      "properties": {
+        "appName": "OrderManagement.Web",
+        "projectKind": "AspNetCore",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 9,
+        "numberOfCodeFiles": 4,
+        "linesTotal": 2220,
+        "linesOfCode": 297,
+        "totalApiScanned": 394,
+        "minLinesOfCodeToChange": 2,
+        "maxLinesOfCodeToChange": 2
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "36b638ec-54c0-4832-a3bf-57b778dec5d2",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\web\\OrderManagement.Web\\OrderManagement.Web.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.OpenApi, 8.0.28\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.OpenApi, and replace with new package Microsoft.AspNetCore.OpenApi 10.0.9",
+              "protected": "Microsoft.AspNetCore.OpenApi, 8.0.28\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.OpenApi, and replace with new package Microsoft.AspNetCore.OpenApi 10.0.9"
+            },
+            "kind": "File",
+            "path": "src\\web\\OrderManagement.Web\\OrderManagement.Web.csproj",
+            "snippet": "Microsoft.AspNetCore.OpenApi, 8.0.28\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.OpenApi, and replace with new package Microsoft.AspNetCore.OpenApi 10.0.9",
+            "protectedSnippet": "Microsoft.AspNetCore.OpenApi, 8.0.28\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.OpenApi, and replace with new package Microsoft.AspNetCore.OpenApi 10.0.9",
+            "label": "Microsoft.AspNetCore.OpenApi 8.0.28",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.OpenApi",
+              "PackageVersion": "8.0.28",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "eb6d46d4-33da-47bb-8748-bb154b6f8568",
+          "ruleId": "Project.0002",
+          "projectPath": "src\\web\\OrderManagement.Web\\OrderManagement.Web.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "src\\web\\OrderManagement.Web\\OrderManagement.Web.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "946685ce-713f-432b-963d-573c1ca2970a",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "src\\web\\OrderManagement.Web\\OrderManagement.Web.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return resp.Content.ReadAsStringAsync().Result;",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "src\\web\\OrderManagement.Web\\Services\\PythonApiClient.cs",
+            "snippet": "return resp.Content.ReadAsStringAsync().Result;",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 73,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "e7bab062-ff83-4f4c-8b86-a5befb1a53a0",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "src\\web\\OrderManagement.Web\\OrderManagement.Web.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return resp.Content.ReadAsStringAsync().Result;",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "src\\web\\OrderManagement.Web\\Services\\PythonApiClient.cs",
+            "snippet": "return resp.Content.ReadAsStringAsync().Result;",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 64,
+            "column": 8
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "API is binary incompatible for selected .NET version: affects existing binaries, often requiring recompilation, because the API has changed in a way that prevents older binaries from loading or executing.",
+      "label": "Binary incompatible for selected .NET version",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0003": {
+      "id": "Api.0003",
+      "isFeature": false,
+      "description": "API has a behavioral change in selected .NET version: code and binaries may behave differently at runtime without needing recompilation, but the new behavior might be undesirable and require updates.",
+      "label": "Behavioral change in selected .NET version",
+      "severity": "Potential",
+      "effort": 1
+    },
+    "Wpf": {
+      "id": "Wpf",
+      "isFeature": false,
+      "description": "WPF APIs for building Windows desktop applications with XAML-based UI that are available in .NET on Windows. WPF provides rich desktop UI capabilities with data binding and styling. Enable Windows Desktop support: Option 1 (Recommended): Target net9.0-windows; Option 2: Add \u003CUseWindowsDesktop\u003Etrue\u003C/UseWindowsDesktop\u003E.",
+      "label": "WPF (Windows Presentation Foundation)",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "WPF on .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2342008",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}

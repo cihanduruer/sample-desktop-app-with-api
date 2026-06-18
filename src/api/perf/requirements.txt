@@ -1,0 +1,2 @@
+# Locust performance test dependencies (kept separate from the app runtime deps).
+locust==2.32.4

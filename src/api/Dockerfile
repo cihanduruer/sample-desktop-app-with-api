@@ -12,5 +12,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . ./
 
+# The app defaults to loopback (127.0.0.1); inside a container it must listen on
+# all interfaces to be reachable. CORS is limited to the known web origins.
+ENV ORDER_API_HOST=0.0.0.0 \
+    ORDER_API_CORS_ORIGINS=http://localhost:5080,http://localhost:5173
+
 EXPOSE 5001
 CMD ["python", "app.py"]

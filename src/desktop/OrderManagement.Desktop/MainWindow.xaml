@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="Order Management (Desktop)" Height="560" Width="900">
 
-    <!-- BAD: the view model is created here and its constructor does blocking I/O. -->
+    <!-- The view model is created here. Its constructor no longer blocks the UI thread:
+         the initial load runs asynchronously so the window renders immediately. -->
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
