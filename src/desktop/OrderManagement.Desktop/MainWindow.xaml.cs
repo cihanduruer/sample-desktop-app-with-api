@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Windows;
+using OrderManagement.Desktop.Services;
 using OrderManagement.Desktop.ViewModels;
 
 namespace OrderManagement.Desktop;
@@ -28,13 +29,8 @@ public partial class MainWindow : Window
         {
             var vm = (MainViewModel)DataContext;
 
-            // BAD: string concatenation in a loop instead of StringBuilder/CSV writer.
-            var csv = "Id,Customer,Status,Items,Total,Created\n";
-            foreach (var o in vm.Orders)
-            {
-                csv = csv + o.Id + "," + o.CustomerName + "," + o.Status + ","
-                    + o.ItemCount + "," + o.Total + "," + o.CreatedAt + "\n";
-            }
+            // FIX: CSV building moved to a unit-testable helper (was string concat in a loop).
+            var csv = OrderCsvExporter.BuildCsv(vm.Orders);
 
             // BAD: hard-coded path on the C: drive; synchronous write on the UI thread.
             var path = "C:\\temp\\orders_export.csv";

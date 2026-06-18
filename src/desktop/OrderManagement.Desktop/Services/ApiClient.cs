@@ -15,13 +15,13 @@ namespace OrderManagement.Desktop.Services;
 //   * Exceptions are swallowed and turned into empty lists / nulls.
 //   * No timeouts, no cancellation, no retry, no logging abstraction.
 // ============================================================================
-public class ApiClient
+public class ApiClient : IApiClient
 {
     // BAD: hard-coded endpoint. No configuration, no environment override.
     private const string BaseUrl = "http://localhost:5001";
 
-    // BAD: the "auth token" is just stored in a public mutable field.
-    public string? Token;
+    // BAD: the "auth token" is just stored in a mutable property.
+    public string? Token { get; private set; }
 
     public async Task<List<Order>> GetOrdersAsync()
     {
