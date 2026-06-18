@@ -90,7 +90,7 @@ export default function App() {
 
   return (
     <div style={{ padding: 20, maxWidth: 1000, margin: "0 auto" }}>
-      <h1 style={{ color: "#333" }}>Order Management (Web)</h1>
+      <h1 style={{ color: "var(--abb-red)" }}>Order Management (Web)</h1>
 
       {/* Login row. BAD: password rendered as text input; creds in state. */}
       <div style={{ marginBottom: 12 }}>
