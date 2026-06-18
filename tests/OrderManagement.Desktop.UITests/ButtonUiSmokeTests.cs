@@ -152,7 +152,7 @@ public sealed class ButtonUiSmokeTests : IDisposable
         {
             var candidate = Path.Combine(
                 dir.FullName, "src", "desktop", "OrderManagement.Desktop",
-                "bin", "Debug", "net8.0-windows", exeName);
+                "bin", "Debug", "net10.0-windows", exeName);
             if (File.Exists(candidate))
             {
                 return candidate;

@@ -20,8 +20,8 @@ public class ApiClient : IApiClient
     // BAD: hard-coded endpoint. No configuration, no environment override.
     private const string BaseUrl = "http://localhost:5001";
 
-    // BAD: the "auth token" is just stored in a public mutable property.
-    public string? Token { get; set; }
+    // BAD: the "auth token" is just stored in a mutable property.
+    public string? Token { get; private set; }
 
     public async Task<List<Order>> GetOrdersAsync()
     {

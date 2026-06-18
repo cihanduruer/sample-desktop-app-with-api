@@ -14,9 +14,9 @@ Final solution-wide validation after the .NET 10 upgrade. Built the full solutio
 - **Behavioral changes**: `System.Uri` and `System.Net.Http.HttpContent` changes are runtime-only and low-impact. They are exercised by the smoke tests; recommend one manual run against the live Python API (port 5001) for full confidence.
 - **Central Package Management (CPM)**: with 4 projects this is optional; consider a `Directory.Packages.props` if the solution grows.
 - **`System.Drawing.Common` pin**: pinned to stable `8.0.0` in the UI test project to clear the critical `NU1904` advisory from FlaUI's transitive `5.0.2`. Revisit/remove if FlaUI ships a release that updates this dependency.
-- **OpenAPI stack**: `Swashbuckle.AspNetCore` 6.6.2 works on .NET 10, but modern .NET ships `Microsoft.AspNetCore.OpenApi` natively — consider consolidating later.
+- **OpenAPI stack**: upgraded to `Swashbuckle.AspNetCore` **10.2.1** alongside `Microsoft.AspNetCore.OpenApi` 10.0.9 for full .NET 10 compatibility.
 - **Package currency**: `CommunityToolkit.Mvvm` 8.3.2 is compatible; bump to latest only if desired.
-- **Teaching-artifact `BAD:` smells** (SQL injection in the API, plaintext passwords, money as `double`, `new HttpClient` per call, hard-coded paths/URLs, empty catch blocks) remain by design — candidates for the separate Clean Code pass, not the framework upgrade.
+- **Teaching-artifact `BAD:` smells** (plaintext passwords in ApiClient, money as `double`, `new HttpClient` per call, hard-coded URLs, empty catch blocks) remain as deliberate teaching artifacts — candidates for the separate Clean Code pass, not the framework upgrade.
 
 ## Done-when verification
 - ✅ Full solution builds cleanly (0 errors, 0 warnings) in Debug and Release.

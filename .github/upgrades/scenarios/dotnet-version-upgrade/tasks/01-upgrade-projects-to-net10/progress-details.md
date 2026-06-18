@@ -11,7 +11,7 @@ Upgraded the entire solution from .NET 8 to .NET 10 in a single All-At-Once pass
 
 ## Decisions / notes
 - **Expanded scope**: the two test projects were added during the earlier desktop bug-fix work and reference the Desktop project. An older TFM cannot reference a newer one, so they had to move to `net10.0-windows` together with the app. 4 projects retargeted, not 2.
-- `CommunityToolkit.Mvvm` 8.3.2 and `Swashbuckle.AspNetCore` 6.6.2 left as-is (assessment: compatible).
+- `CommunityToolkit.Mvvm` 8.3.2 left as-is (assessment: compatible). `Swashbuckle.AspNetCore` updated to **10.2.1** to maintain full compatibility with net10.0 and `Microsoft.AspNetCore.OpenApi` 10.0.9.
 - `Microsoft.AspNetCore.OpenApi` target version confirmed via package tooling as **10.0.9**.
 - **NU1904 vulnerability** (`System.Drawing.Common` 5.0.2, critical) surfaced from FlaUI's transitive graph. Resolved by pinning a direct reference to the patched stable **8.0.0** (the tooling-suggested 11.0.0 was a preview, which was avoided). Not suppressed.
 - Behavioral API changes flagged in the assessment (`System.Uri`, `System.Net.Http.HttpContent`) are low-impact/runtime-only; no source changes required.

@@ -31,6 +31,7 @@ def create_app(config: Config | None = None) -> Flask:
     config = config or Config.from_env()
 
     app = Flask(__name__)
+    app.secret_key = config.secret_key
     app.config["DATABASE_PATH"] = config.database_path
     app.config["DEFAULT_PAGE_SIZE"] = config.default_page_size
     app.config["MAX_PAGE_SIZE"] = config.max_page_size

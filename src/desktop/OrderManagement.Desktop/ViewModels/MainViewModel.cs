@@ -1,7 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using OrderManagement.Desktop.Models;
@@ -110,7 +109,7 @@ public partial class MainViewModel : ObservableObject
     {
         if (SelectedOrder == null)
         {
-            MessageBox.Show("Pick an order first");
+            StatusMessage = "Pick an order first";
             return;
         }
 
